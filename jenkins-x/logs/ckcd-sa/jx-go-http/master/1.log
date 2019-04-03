@@ -1,0 +1,84 @@
+Step: build-step-credential-initializer-l5jh6:
+
+{"level":"warn","ts":1554311422.883552,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/backport-container-name-fix\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1554311422.8849618,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+Step: build-step-git-source-ckcd-sa-**-go-http-master-qqn5z:
+
+{"level":"warn","ts":1554311425.298658,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/backport-container-name-fix\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1554311425.531019,"logger":"fallback-logger","caller":"git-init/main.go:99","msg":"Successfully cloned \"https://github.com/ckcd-sa/**-go-http\" @ \"v0.0.1\" in path \"/workspace/source\""}
+Step: build-step-place-tools:
+
+Step: build-step-setup-**-git-credentials:
+
+Generated Git credentials file /workspace/xdg_config/git/credentials
+Step: build-step-build-make-build:
+
+CGO_ENABLED=0 GO15VENDOREXPERIMENT=1 go build -ldflags '' -o bin/**-go-http main.go
+Step: build-step-build-container-build:
+
+[36mINFO[0m[0000] No base image, nothing to extract            
+[36mINFO[0m[0000] cmd: EXPOSE                                  
+[36mINFO[0m[0000] Adding exposed port: 8080/tcp                
+[36mINFO[0m[0000] Using files from context: [/workspace/source/bin] 
+[36mINFO[0m[0000] Skipping unpacking as no commands require it. 
+[36mINFO[0m[0000] Taking snapshot of full filesystem...        
+[36mINFO[0m[0000] EXPOSE 8080                                  
+[36mINFO[0m[0000] cmd: EXPOSE                                  
+[36mINFO[0m[0000] Adding exposed port: 8080/tcp                
+[36mINFO[0m[0000] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0000] ENTRYPOINT ["/**-go-http"]                   
+[36mINFO[0m[0000] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0000] Using files from context: [/workspace/source/bin] 
+[36mINFO[0m[0000] COPY ./bin/ /                                
+[36mINFO[0m[0000] Taking snapshot of files...                  
+ERROR: logging before flag.Parse: E0403 17:12:26.252796      11 metadata.go:142] while reading 'google-dockercfg' metadata: http status code: 404 while fetching url http://metadata.google.internal./computeMetadata/v1/instance/attributes/google-dockercfg
+ERROR: logging before flag.Parse: E0403 17:12:26.258717      11 metadata.go:159] while reading 'google-dockercfg-url' metadata: http status code: 404 while fetching url http://metadata.google.internal./computeMetadata/v1/instance/attributes/google-dockercfg-url
+2019/04/03 17:12:26 pushed blob: sha256:f20c0bb0607896ae59bc60370ddd4d2e206e2f5651a4a10c3ec18be0cf8f025a
+2019/04/03 17:12:26 pushed blob: sha256:2f8387d09490242fa2401d86159dfd5df2039f85a8f10233f7fe3ee928a05c2b
+2019/04/03 17:12:26 10.31.245.28:5000/ckcd-sa/**-go-http:0.0.1: digest: sha256:ebbb6175db69c6a19013487959898480f2b39a4e58591cb74ea08fc18b4a0f3c size: 428
+Step: build-step-build-post-build:
+
+no CVE provider running in the current ** namespace so skip adding image to be analysed
+Step: build-step-promote-changelog:
+
+Converted /workspace/source/charts/**-go-http to an unshallow repository
+Generating change log from git ref ebb1ca45f5d4210adf6ca7a404c2d80b07492927 => 862fb5ffa7fcc51da1c277a0187c91739f708936
+Failed to enrich commits with issues: User.jenkins.io "-0" is invalid: metadata.name: Invalid value: "-0": a DNS-1123 subdomain must consist of lower case alphanumeric characters, '-' or '.', and must start and end with an alphanumeric character (e.g. 'example.com', regex used for validation is '[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')
+Failed to enrich commits with issues: User.jenkins.io "-0" is invalid: metadata.name: Invalid value: "-0": a DNS-1123 subdomain must consist of lower case alphanumeric characters, '-' or '.', and must start and end with an alphanumeric character (e.g. 'example.com', regex used for validation is '[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')
+Finding issues in commit messages using git format
+No release found for ckcd-sa/**-go-http and tag v0.0.1 so creating a new release
+Updated the release information at https://github.com/ckcd-sa/**-go-http/releases/tag/v0.0.1
+generated: /workspace/source/charts/**-go-http/templates/release.yaml
+Created Release **-go-http-0-0-1 resource in namespace **
+Updating PipelineActivity ckcd-sa-**-go-http-master-1 with version 0.0.1
+Updated PipelineActivities ckcd-sa-**-go-http-master-1 with release notes URL: https://github.com/ckcd-sa/**-go-http/releases/tag/v0.0.1
+Step: build-step-promote-helm-release:
+
+No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: jenkins-x http://chartmuseum.jenkins-x.io
+Successfully added Helm repository jenkins-x.
+Adding missing Helm repo: releases http://jenkins-x-chartmuseum:8080
+Successfully added Helm repository releases.
+No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Uploading chart file **-go-http-0.0.1.tgz to http://jenkins-x-chartmuseum:8080/api/charts
+Received 201 response: {"saved":true}
+Step: build-step-promote-**-promote:
+
+prow based install so skip waiting for the merge of Pull Requests to go green as currently there is an issue with gettingstatuses from the PR, see https://github.com/jenkins-x/**/issues/2410
+Promoting app **-go-http version 0.0.1 to namespace **-staging
+Waiting for the fork of ***********/environment-lynxmint-staging to appear...
+Forked Git repository to https://github.com/***********/environment-lynxmint-staging
+
+Created Pull Request: https://github.com/ckcd-sa/environment-lynxmint-staging/pull/1
+
+Pull Request https://github.com/ckcd-sa/environment-lynxmint-staging/pull/1 is merged at sha cd0c76a4731fa9c917df5a4cd674fdb20b1f29ab
+Pull Request merged but we are not waiting for the update pipeline to complete!
+Could not find the service URL in namespace **-staging for names **-go-http, **-**-go-http, **-staging-**-go-http
+Step: build-step-source-mkdir-ckcd-sa-**-go-http-master-p2wjn:
+
+{"level":"warn","ts":1554311613.9253426,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1554311613.9646702,"logger":"fallback-logger","caller":"bash/main.go:65","msg":"Successfully executed command \"mkdir -p /pvc/from-build-pack/workspace\""}
+Step: build-step-source-copy-ckcd-sa-**-go-http-master-tb2fg:
+
+{"level":"warn","ts":1554311614.9921918,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1554311615.0120444,"logger":"fallback-logger","caller":"bash/main.go:65","msg":"Successfully executed command \"cp -r /workspace/source/. /pvc/from-build-pack/workspace\""}
